@@ -29,22 +29,41 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'telephone' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'address' => ['nullable', 'string', 'max:255'],
+            'pfp' => ['nullable', 'image', 'max:2048']
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            $imagePath = null;
+            if ($request->hasFile('pfp')) {
+                $image = $request->file('pfp');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('img'), $imageName);
+                $imagePath = 'img/' . $imageName;
+            }
 
-        event(new Registered($user));
 
-        Auth::login($user);
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'telephone' => $validatedData['telephone'],
+                'password' => Hash::make($validatedData['password']),
+                'address' => $validatedData['address'],
+                'pfp' => $imagePath,
+            ]);
 
-        return redirect(route('dashboard', absolute: false));
+            event(new Registered($user));
+
+            Auth::login($user);
+
+            return redirect()->intended();
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }
