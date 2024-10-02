@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('icon')->nullable();
-            $table->timestamp('timestamps');
             $table->timestamps();
         });
     }

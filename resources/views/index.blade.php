@@ -51,6 +51,17 @@
 
 <body>
 <div class="container-fluid p-0 bg-light">
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-lg-0">
         <a href="/" class="navbar-brand p-0">
@@ -122,13 +133,13 @@
                             <div class="row justify-content-center align-items-center g-5">
                                 <div class="col-lg-7 text-center wow fadeInUp">
                                     <h1 class="display-4 text-white">{{ $dish->category->title }}<br>
-                                        <a href="" class="booking-link-of-slider">
+                                        <a href="" class="stop-slider-when-hovered">
                                             {{ $dish->title}}
                                         </a>
                                     </h1>
                                     <p class="text-white mx-4 mb-4 pb-2">{{ $dish->description }}</p>
                                     <a href=""
-                                       class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link booking-link-of-slider">
+                                       class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link stop-slider-when-hovered">
                                         <span class="fw-bold">{{ Number::currency($dish->price,'mad') }}</span> |
                                         Commander <i
                                             class="fa fa-shopping-cart"
@@ -143,10 +154,10 @@
         </div>
 
         <div class="buttons">
-            <button id="prev" class="wow fadeInRight">
+            <button id="prev" class="wow fadeInRight stop-slider-when-hovered">
                 <
             </button>
-            <button id="next" class="wow fadeInLeft">></button>
+            <button id="next" class="wow fadeInLeft stop-slider-when-hovered">></button>
         </div>
     </div>
     <!-- hero end -->
@@ -414,56 +425,64 @@
     {{--        <div id="panorama" class=" my-2 rounded-5 shadow wow fadeInUp"></div>--}}
     {{--    </div>--}}
     {{--    <!-- panorama end -->--}}
-    {{--    <!-- footer start -->--}}
-    {{--    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">--}}
-    {{--        <div class="container py-5">--}}
-    {{--            <div class="row g-5">--}}
-    {{--                <div class="col-lg-3 col-md-6">--}}
-    {{--                    <h1 class="text-primary m-0 d-flex">--}}
-    {{--                        <img src="./img/logo.svg" alt="Logo" class=" d-inline-block h-100 w-auto">--}}
-    {{--                        <span class=" h-100 align-bottom align-self-end">Ressine</span>--}}
-    {{--                    </h1>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-lg-3 col-md-6">--}}
-    {{--                    <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>--}}
-    {{--                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>--}}
-    {{--                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>--}}
-    {{--                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>--}}
-    {{--                    <div class="d-flex pt-2">--}}
-    {{--                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>--}}
-    {{--                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>--}}
-    {{--                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>--}}
-    {{--                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-lg-3 col-md-6">--}}
-    {{--                    <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>--}}
-    {{--                    <h5 class="text-light fw-normal">Monday - Saturday</h5>--}}
-    {{--                    <p>09AM - 09PM</p>--}}
-    {{--                    <h5 class="text-light fw-normal">Sunday</h5>--}}
-    {{--                    <p>10AM - 08PM</p>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-lg-3 col-md-6">--}}
-    {{--                    <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>--}}
-    {{--                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>--}}
-    {{--                    <div class="position-relative mx-auto" style="max-width: 400px;">--}}
-    {{--                        <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">--}}
-    {{--                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="copyright">--}}
-    {{--                <div class="row">--}}
-    {{--                    <div class="col-md-12 text-center text-md-center mb-3 mb-md-0">--}}
-    {{--                        © 2024 Ressine - All Rights Reserved--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    {{--    <!-- footer end -->--}}
+
+    {{--    footer start--}}
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h1 class="text-primary m-0 d-flex">
+                        <img src="{{ asset('img/logo.svg') }}" alt="Logo" class=" d-inline-block h-100 w-50">
+                    </h1>
+                    <h1>
+                        <span class="text-primary  h-100 align-bottom align-self-end">Ressine</span>
+                    </h1>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Errachidia </p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+212 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>ressine@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Ouverture</h4>
+                    <h5 class="text-light fw-normal">Lundi - Samedi</h5>
+                    <p>09h - 21h</p>
+                    <h5 class="text-light fw-normal">Dimanche</h5>
+                    <p>10h - 20h</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">liens utils </h4>
+
+                    <p class="mb-2"><a href="/admin">Admin </a>|<a href="/chef"> Chef </a>|<a href="/livreur"> Livreur
+                        </a></p>
+                    <form class="position-relative mx-auto" action="{" method="POST"
+                          style="max-width: 400px;">
+                        @csrf
+                        <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" name="message"
+                               placeholder="Votre Message" required>
+                        <button type="submit" class="btn btn-primary py-2 mt-2 me-2">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-12 text-center text-md-center mb-3 mb-md-0">
+                        © 2024 Ressine - Tous droits réservés
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--    footer end--}}
 </div>
 
 
@@ -472,23 +491,22 @@
 
 
 <!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/tempusdominus/js/moment.min.js"></script>
-<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+<script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+<script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
+<script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('lib/tempusdominus/js/moment.min.js') }}"></script>
+<script src="{{ asset('lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+<script src="{{ asset('lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
-<!-- popular items slider  -->
+<!-- popular items slider -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-<script src="js/main.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

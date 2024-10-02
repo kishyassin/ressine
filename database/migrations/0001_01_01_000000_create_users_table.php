@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('name');
             $table->enum('role', ['admin', 'client', 'chef', 'livreur'])->default('client');
             $table->string('pfp')->nullable();
-            $table->string('telephone', 20);
+            $table->string('telephone', 20)->nullable();
             $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
