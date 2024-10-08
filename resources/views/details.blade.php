@@ -62,9 +62,10 @@
                                 </div>
                             @else
                                 <div class="mt-4">
-                                    <form action="{{route('rating.store',$details->id)}}"
-                                          method="POST">
+                                    <form action="{{ route('rating.store') }}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="dish_id" value="{{ $details->id }}">
+
                                         <div class="rating-css">
                                             <input type="radio" value="1" name="rating" id="rating1"><label
                                                 for="rating1" class="fa fa-star"></label>

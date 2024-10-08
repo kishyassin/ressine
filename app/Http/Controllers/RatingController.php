@@ -13,7 +13,7 @@ class RatingController extends Controller
         return Rating::all();
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         // Validate the rating input
         $request->validate([
@@ -30,12 +30,16 @@ class RatingController extends Controller
             ['rating' => $request->rating]  // The new or updated rating value
         );
 
+        // Find the dish by dish_id from the request
+        $dish = Dish::findOrFail($request->dish_id);
+
         // Update the average rating of the dish
-        $dish = Dish::findOrFail($id);
         $dish->average_rating = $dish->ratings()->avg('rating');
         $dish->save();
+
         return redirect()->back()->with('success', 'Your rating has been submitted.');
     }
+
 
     public function show(Rating $rating)
     {

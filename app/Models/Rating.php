@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Rating extends Model
 {
+    protected $fillable = ['user_id', 'dish_id', 'rating'];
+
     public function dish(): BelongsTo
     {
         return $this->belongsTo(Dish::class);
