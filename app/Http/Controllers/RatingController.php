@@ -13,29 +13,28 @@ class RatingController extends Controller
         return Rating::all();
     }
 
-    public function store(Request $request, $dishId)
+    public function store(Request $request, $id)
     {
+        // Validate the rating input
         $request->validate([
-            'dish_id' => ['required', 'exists:dishes'],
-            'user_id' => ['required', 'exists:users'],
-            'rating' => 'required|integer|min:1|max:5',
+            'dish_id' => 'required|exists:dishes,id',
+            'rating' => 'required|integer|min:1|max:5', // Ensure rating is between 1 and 5
         ]);
 
-
-        $dish = Dish::findOrFail($dishId);
-
-        // Create a new rating for the dish
-        Rating::create([
-            'dish_id' => $dish->id,
-            'user_id' => auth()->id(),  // Assume user is authenticated
-            'rating' => $request->input('rating'),
-        ]);
+        // Store or update the rating
+        Rating::updateOrCreate(
+            [
+                'user_id' => \Auth::id(),   // Current user
+                'dish_id' => $request->dish_id  // The dish being rated
+            ],
+            ['rating' => $request->rating]  // The new or updated rating value
+        );
 
         // Update the average rating of the dish
+        $dish = Dish::findOrFail($id);
         $dish->average_rating = $dish->ratings()->avg('rating');
         $dish->save();
-
-        return redirect()->back()->with('success', 'Thanks for your rating!');
+        return redirect()->back()->with('success', 'Your rating has been submitted.');
     }
 
     public function show(Rating $rating)
@@ -43,16 +42,19 @@ class RatingController extends Controller
         return $rating;
     }
 
-    public function update(Request $request, Rating $rating)
+    public function update(Request $request, $dish_id)
     {
         $data = $request->validate([
             'dish_id' => ['required', 'exists:dishes'],
             'user_id' => ['required', 'exists:users'],
             'rating' => ['required', 'integer'],
         ]);
-
+        $user_id = \Auth::id();
+        $rating = Rating::where('user_id', $user_id)->where('dish_id', $dish_id)->first();
         $rating->update($data);
-
+        $dish = Dish::findOrFail(request('dish_id'));
+        $dish->average_rating = $dish->ratings()->avg('rating');
+        $dish->save();
         return $rating;
     }
 

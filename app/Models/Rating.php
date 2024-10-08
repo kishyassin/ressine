@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Rating extends Model
 {
-    public function plat(): BelongsTo
+    public function dish(): BelongsTo
     {
         return $this->belongsTo(Dish::class);
     }

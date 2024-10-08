@@ -96,7 +96,8 @@
         pannellum.viewer('panorama', {
             "type": "equirectangular",
             "panorama": "./img/restaurant-panorama.jpg",
-            "preview": "./img/restaurant-panorama.jpg"
+            "preview": "./img/restaurant-panorama.jpg",
+            "autoRotate": -2
         });
     });
 

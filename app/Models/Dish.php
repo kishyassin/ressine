@@ -20,6 +20,11 @@ class Dish extends Model
         return $bestSevenDishes;
     }
 
+    public function getDishDetails($id)
+    {
+        return $this->with('category')->where('id', $id)->first();
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

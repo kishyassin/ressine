@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 class DishController extends Controller
 {
 
+
     public function index()
     {
         return Dish::all();
     }
+
 
     public function store(Request $request)
     {
