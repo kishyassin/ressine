@@ -98,9 +98,18 @@ livreurs, et administrateurs ont également leurs propres interfaces de gestion.
 4. Exécutez les migrations :
 
     ```bash
-    php artisan migrate --seed
+    php artisan migrate
+    
+5. Implement ShoppingCart :
+from anayarojo/shoppingcart
 
-5. Démarrez le serveur de développement :
+    ```bash
+    composer require anayarojo/shoppingcart
+
+    php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
+
+    
+6. Démarrez le serveur de développement :
 
    ```bash
     php artisan serve
