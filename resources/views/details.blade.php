@@ -90,7 +90,7 @@
 
                                 <div class="rating-css">
                                     @for ($i = 1; $i <= 5; $i++)
-                                        <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}">
+                                        <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" checked>
                                         <label for="rating{{ $i }}" class="fa fa-star"></label>
                                     @endfor
                                 </div>

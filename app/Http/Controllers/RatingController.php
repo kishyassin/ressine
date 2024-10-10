@@ -37,7 +37,7 @@ class RatingController extends Controller
         $dish->average_rating = $dish->ratings()->avg('rating');
         $dish->save();
 
-        return redirect()->back()->with('success', 'Your rating has been submitted.');
+        return redirect()->back()->with('success', 'Votre évaluation a été soumise.');
     }
 
 

@@ -12,7 +12,7 @@
                             <div class="row justify-content-center align-items-center g-5">
                                 <div class="col-lg-7 text-center wow fadeInUp">
                                     <h1 class="display-4 text-white">{{ $dish->category->title }}<br>
-                                        <a href="" class="stop-slider-when-hovered">
+                                        <a href="{{route("details",$dish->id)}}" class="stop-slider-when-hovered">
                                             {{ $dish->title}}
                                         </a>
                                     </h1>
@@ -62,7 +62,7 @@
                                         <h1 class="food-price">{{ Number::currency($dish->price,'mad') }}</h1>
                                         <div class="tranding-slide-content-bottom">
                                             <h2 class="food-name">
-                                                <a href="">
+                                                <a href="{{route("details",$dish->id)}}">
                                                     {{ $dish->title }}
                                                 </a>
                                             </h2>
@@ -80,7 +80,7 @@
                                             </h5>
                                             <div class="w-100 row">
                                                 <div class="col-6 p-1">
-                                                    <a href=""
+                                                    <a href="{{route("details",$dish->id)}}"
                                                        class="w-100 p-2 rounded-full btn btn-outline-primary">Découvrir
                                                     </a>
                                                 </div>
