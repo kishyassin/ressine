@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -18,5 +19,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/rate', [RatingController::class, 'store'])->name('rating.store');
 });
+Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 
 require __DIR__ . '/auth.php';

@@ -17,7 +17,7 @@
                                         </a>
                                     </h1>
                                     <p class="text-white mx-4 mb-4 pb-2">{{ $dish->description }}</p>
-                                    <a href=""
+                                    <a href="{{route("cart.add",$dish->id)}}"
                                        class="btn btn-primary py-sm-3 px-sm-5 me-3 fw-bold rounded-full booking-link stop-slider-when-hovered">
                                         <span class="fw-bold">{{ Number::currency($dish->price,'mad') }}</span> |
                                         Commander <i
@@ -125,4 +125,41 @@
         </div>
         <div id="panorama" class=" my-2 rounded-5 shadow wow fadeInUp"></div>
     </div>
+@endsection
+
+@section('scripts')
+
+    <!-- JavaScript to toggle between static rating and form -->
+    <script>
+        document.getElementById('modifyBtn').addEventListener('click', function () {
+            document.getElementById('staticRating').style.display = 'none';
+            document.getElementById('ratingForm').style.display = 'block';
+        });
+    </script>
+
+
+    @if(Session::has('success'))
+        <script>
+            $(document).ready(function () {
+                Swal.fire({
+                    title: "Bien",
+                    text: "{{Session::get('success')}}",
+                    icon: "success"
+                });
+            })
+        </script>
+    @endif
+
+    @if(Session::has('error'))
+        <script>
+            $(document).ready(function () {
+                Swal.fire({
+                    title: "Ooops",
+                    text: "{{Session::get('error')}}",
+                    icon: "error"
+                });
+            })
+        </script>
+    @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
