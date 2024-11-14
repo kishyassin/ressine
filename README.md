@@ -118,6 +118,7 @@ livreurs, et administrateurs ont également leurs propres interfaces de gestion.
 7. Pour tester l'affichage avec des données réelles, insérez dans la base de données le script contenu dans le fichier
    `data.sql`.
 
+8. Pour ajouter un administrateur, veuillez créer votre compte, puis accéder à la base de données pour changer le rôle de l'utilisateur en administrateur ou utilisez la commande `php artisan make:filament-user`.
 ## Contribution
 
 Les contributions sont les bienvenues. Pour soumettre des modifications, merci de faire un fork du projet, de créer une
