@@ -101,7 +101,7 @@ livreurs, et administrateurs ont également leurs propres interfaces de gestion.
     php artisan migrate
     
 5. Implement ShoppingCart :
-from anayarojo/shoppingcart
+   from anayarojo/shoppingcart
 
     ```bash
     composer require anayarojo/shoppingcart
@@ -114,6 +114,9 @@ from anayarojo/shoppingcart
    ```bash
     php artisan serve
     npm run dev
+
+7. Pour tester l'affichage avec des données réelles, insérez dans la base de données le script contenu dans le fichier
+   `data.sql`.
 
 ## Contribution
 
