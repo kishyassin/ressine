@@ -1,131 +1,128 @@
-# Gestion de Restaurant - Ressine
+# Restaurant Management - Ressine
 
-Une application de gestion de restaurant développée avec Laravel, Filament, Breeze, ShoppingCart, et Stripe. Elle
-permet aux clients de commander en ligne, de suivre leurs commandes, et de donner des avis sur les plats. Les chefs,
-livreurs, et administrateurs ont également leurs propres interfaces de gestion.
+<img src="public/img/logo.svg" alt="Your Name" width="100%"/>
+A restaurant management application developed with Laravel, Filament, Breeze, ShoppingCart, and Stripe. It allows
+customers to order online, track their orders, and give feedback on dishes. Chefs, delivery personnel, and
+administrators also have their own management interfaces.
 
-## Fonctionnalités
+## Features
 
-### Pour les Clients :
+### For Customers:
 
-- **Authentification** :  
-  Les clients peuvent s'inscrire ou se connecter avec les informations nécessaires.
+- **Authentication**:  
+  Customers can sign up or log in with the necessary information.
 
-- **Découverte du menu** :  
-  Les clients peuvent explorer les plats disponibles par catégorie.
+- **Menu Exploration**:  
+  Customers can browse available dishes by category.
 
-- **Gestion du panier** :  
-  Ajouter, modifier, ou supprimer des plats dans le panier et confirmer les commandes.
+- **Cart Management**:  
+  Add, modify, or remove dishes in the cart and confirm orders.
 
-- **Choix du mode de paiement** :  
-  En ligne via Stripe ou en espèces à la livraison.
+- **Payment Options**:  
+  Online via Stripe or cash on delivery.
 
-- **Suivi des commandes** :  
-  Les clients peuvent voir l'état de leurs commandes à travers un tableau de bord.
+- **Order Tracking**:  
+  Customers can see the status of their orders through a dashboard.
 
-- **Rédaction de témoignages** :  
-  Rédiger des témoignages qui seront affichés après validation de l'administrateur.
+- **Writing Testimonials**:  
+  Write testimonials that will be displayed after administrator validation.
 
-- **Évaluation des plats** :  
-  Donner des étoiles aux plats, une seule fois par plat.
+- **Dish Rating**:  
+  Rate dishes with stars, one rating per dish.
 
-- **Gestion du profil** :  
-  Modifier les informations du profil et récupérer le mot de passe.
+- **Profile Management**:  
+  Modify profile information and recover the password.
 
-### Pour les Chefs :
+### For Chefs:
 
-- **Authentification** :  
-  Connexion dédiée pour les chefs.
+- **Authentication**:  
+  Dedicated login for chefs.
 
-- **Gestion des commandes** :  
-  Voir et modifier l'état des commandes (en attente, en préparation, préparée).
+- **Order Management**:  
+  View and modify the status of orders (pending, in preparation, prepared).
 
-- **Suivi des statistiques** :  
-  Suivre les commandes totales, celles préparées par le chef, et celles en attente.
+- **Statistics Tracking**:  
+  Track total orders, those prepared by the chef, and those pending.
 
-### Pour les Livreurs :
+### For Delivery Personnel:
 
-- **Authentification** :  
-  Connexion dédiée pour les livreurs.
+- **Authentication**:  
+  Dedicated login for delivery personnel.
 
-- **Gestion des factures** :  
-  Voir et modifier l'état des factures (en attente, en livraison, livrée).
+- **Invoice Management**:  
+  View and modify the status of invoices (pending, in delivery, delivered).
 
-- **Suivi des statistiques** :  
-  Suivre les factures en attente et celles livrées par le livreur.
+- **Statistics Tracking**:  
+  Track pending invoices and those delivered by the delivery personnel.
 
-### Pour les Administrateurs :
+### For Administrators:
 
-- **Gestion des informations de l'application** :  
-  Modifier les informations générales de l'application.
+- **Application Information Management**:  
+  Modify general application information.
 
-- **Gestion des services, catégories, plats, chefs, et livreurs** :  
-  Ajouter, modifier, ou supprimer des services, catégories, plats, chefs, et livreurs.
+- **Management of Services, Categories, Dishes, Chefs, and Delivery Personnel**:  
+  Add, modify, or delete services, categories, dishes, chefs, and delivery personnel.
 
-- **Validation des témoignages** :  
-  Changer l'état des témoignages avant leur affichage.
+- **Testimonial Validation**:  
+  Change the status of testimonials before display.
 
-- **Suivi des métriques du restaurant** :  
-  Voir le nombre de clients, de commandes, et les montants totaux.
+- **Restaurant Metrics Tracking**:  
+  View the number of customers, orders, and total amounts.
 
-## Technologies Utilisées
+## Technologies Used
 
 - **Backend** : Laravel 11.9
 - **Frontend** : Filament / Blade
-- **Authentification** : Breeze
-- **Panier** : ShoppingCart
-- **Paiement** : Stripe
+- **Authentication**: Breeze
+- **Cart**: ShoppingCart
+- **Payment**: Stripe
 
 ## Installation
 
-1. Clonez le dépôt :
+1. Clone the repository:
    ```bash
    git clone https://github.com/kishyassin/ressine
+   ```
 
-2. Installez les dépendances :
-
+2. Install dependencies:
     ```bash
     composer install
     npm install
+   ```
 
-
-3. Configurez votre fichier .env et générez la clé de l'application :
-
+3. Configure your .env file and generate the application key:
    ```bash
     cp .env.example .env
     php artisan key:generate
+   ```
 
-4. Exécutez les migrations :
-
+4. Run the migrations:
     ```bash
     php artisan migrate
-    
+   ```
+
 5. Implement ShoppingCart :
    from anayarojo/shoppingcart
-
     ```bash
     composer require anayarojo/shoppingcart
-
     php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
+   ```
 
-    
-6. Démarrez le serveur de développement :
-
+6. Start the development server:
    ```bash
     php artisan serve
     npm run dev
+   ```
 
-7. Pour tester l'affichage avec des données réelles, insérez dans la base de données le script contenu dans le fichier
-   `data.sql`.
+7. To test the display with real data, insert the script contained in the `data.sql` file into the database.
 
 ## Contribution
 
-Les contributions sont les bienvenues. Pour soumettre des modifications, merci de faire un fork du projet, de créer une
-branche, et de soumettre une pull request.
+Contributions are welcome. To submit changes, please fork the project, create a branch, and submit a pull request.
 
-## Licence
+## License
 
-Ce projet est sous licence MIT.
+This project is licensed under the MIT License.
 
 
 
