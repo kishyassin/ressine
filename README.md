@@ -116,6 +116,7 @@ administrators also have their own management interfaces.
 
 7. To test the display with real data, insert the script contained in the `data.sql` file into the database.
 
+8. Pour ajouter un administrateur, veuillez créer votre compte, puis accéder à la base de données pour changer le rôle de l'utilisateur en administrateur ou utilisez la commande `php artisan make:filament-user`.
 ## Contribution
 
 Contributions are welcome. To submit changes, please fork the project, create a branch, and submit a pull request.
