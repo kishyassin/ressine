@@ -1,6 +1,6 @@
 # Restaurant Management - Ressine
 
-<img src="public/img/logo.svg" alt="Your Name" width="100%"/>
+<img src="./Opening.png" alt="Your Name" width="100%"/>
 A restaurant management application developed with Laravel, Filament, Breeze, ShoppingCart, and Stripe. It allows
 customers to order online, track their orders, and give feedback on dishes. Chefs, delivery personnel, and
 administrators also have their own management interfaces.
@@ -116,7 +116,9 @@ administrators also have their own management interfaces.
 
 7. To test the display with real data, insert the script contained in the `data.sql` file into the database.
 
-8. Pour ajouter un administrateur, veuillez créer votre compte, puis accéder à la base de données pour changer le rôle de l'utilisateur en administrateur ou utilisez la commande `php artisan make:filament-user`.
+8. Pour ajouter un administrateur, veuillez créer votre compte, puis accéder à la base de données pour changer le rôle
+   de l'utilisateur en administrateur ou utilisez la commande `php artisan make:filament-user`.
+
 ## Contribution
 
 Contributions are welcome. To submit changes, please fork the project, create a branch, and submit a pull request.
