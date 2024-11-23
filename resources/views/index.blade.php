@@ -85,7 +85,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="col-6 p-1">
-                                                    <a href=""
+                                                    <a href="{{route("cart.add",$dish->id)}}"
                                                        class="w-100 p-2 rounded-full btn btn-primary">Ajouter Au Panier
                                                         <i
                                                             class="fa fa-shopping-cart"
@@ -144,7 +144,14 @@
                 Swal.fire({
                     title: "Bien",
                     text: "{{Session::get('success')}}",
-                    icon: "success"
+                    icon: "success",
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    cancelButtonText: 'Voir Panier'
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.cancel) {
+                        window.location.href = "{{ route('cart.index') }}";
+                    }
                 });
             })
         </script>

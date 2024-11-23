@@ -20,5 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/rate', [RatingController::class, 'store'])->name('rating.store');
 });
 Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
-
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::delete('/cart/{rowId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::put('/cart/{rowId}', [CartController::class, 'updateCart'])->name('cart.update');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 require __DIR__ . '/auth.php';
