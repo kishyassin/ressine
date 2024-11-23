@@ -99,7 +99,20 @@
                         </div>
                     @endif
                 @else
-                    <p class="mt-4">Veuillez vous <a href="{{ route('login') }}">connecter</a> pour évaluer ce plat.</p>
+                    <div class="mt-4">
+                        <form action="{{ route('rating.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="dish_id" value="{{ $details->id }}">
+
+                            <div class="rating-css">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" checked>
+                                    <label for="rating{{ $i }}" class="fa fa-star"></label>
+                                @endfor
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Valider</button>
+                        </form>
+                    </div>
                 @endauth
 
 
