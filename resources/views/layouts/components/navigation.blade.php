@@ -26,6 +26,8 @@
                 </div>
             </div> --}}
             <a href="/contact" class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
+            <a href="{{route("cart.index")}}" class="nav-item nav-link"><i class="fa fa-shopping-cart"
+                                                                           aria-hidden="true"></i></a>
 
             @if (Route::has('login'))
                 @auth
@@ -43,8 +45,7 @@
                             </form>
                         </div>
                     </div>
-                    <a href="" class="nav-item nav-link"><i class="fa fa-shopping-cart"
-                                                            aria-hidden="true"></i></a>
+
                 @else
                     <div
                         class="sm:top-0 sm:right-0 ps-3 d-flex align-items-center justify-content-center text-right">
@@ -52,6 +53,7 @@
                     </div>
                 @endauth
             @endif
+
         </div>
     </div>
 </nav>
